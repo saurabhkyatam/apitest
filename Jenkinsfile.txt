@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+               git 'https://github.com/saurabhkyatam/apitest.git'
+               sh 'groovy apicallgetalljob.groovy'
+            }
+        }
+    }
+}
