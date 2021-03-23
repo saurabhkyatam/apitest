@@ -8,8 +8,8 @@ import org.apache.http.impl.client.*
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
-class Example {
-   static def getToken() {
+
+    def getToken() {
       List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
             nameValuePairs.add(new BasicNameValuePair("grant_type", "client_credentials"));
             nameValuePairs.add(new BasicNameValuePair("client_id", "b337f964-6322-4675-b545-b30bce7137cf@6d14682b-68a6-4a25-af3d-06615e146b1e"));
@@ -41,8 +41,7 @@ def access_token=resultMap.access_token
 return token_type +' '+ access_token
 
    } 
-
-static def getJob(String token)
+ def getJob(String token)
 {
 
 def select
@@ -67,9 +66,3 @@ println(output);
 
 }
 	
-   static void main(String[] args) {
-      String token =getToken();
-      //println token
-        getJob(token)
-   } 
-}

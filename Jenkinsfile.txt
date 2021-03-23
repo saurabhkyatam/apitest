@@ -1,12 +1,17 @@
-pipeline {
-    agent any
+def code
 
-    stages {
-        stage('build') {
-            steps {
-               git 'https://github.com/saurabhkyatam/apitest.git'
-               sh 'groovy apicallgetalljob.groovy'
-            }
-        }
-    }
+node('java-agent') {
+  stage('Checkout') {
+    checkout scm
+  }
+
+  stage('Load') {
+    code = load 'apicallgetalljob.groovy'
+  }
+
+  stage('Execute') {
+    code.getToken()
+  }
 }
+
+code.getJob()
