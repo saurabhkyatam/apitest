@@ -1,17 +1,11 @@
-def code
+pipeline {
+    agent any
 
-node('java-agent') {
-  stage('Checkout') {
-    checkout scm
-  }
-
-  stage('Load') {
-    code = load 'apicallgetalljob.groovy'
-  }
-
-  stage('Execute') {
-    code.getToken()
-  }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
 }
-
-code.getJob()
